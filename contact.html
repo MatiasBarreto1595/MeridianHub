@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)file:///C:/Users/Matia/Downloads/contact.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — MeridianHub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./Contact — MeridianHub_files/css2" rel="stylesheet">
+  <link rel="stylesheet" href="file:///C:/Users/Matia/Downloads/css2">
+  <style>
+    /* ── Contact page specific styles ── */
+    .contact-hero {
+      text-align: center;
+      padding: 80px 24px 48px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .contact-hero .section-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent, #00c2a8);
+      margin-bottom: 16px;
+    }
+
+    .contact-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: var(--heading, #ffffff);
+    }
+
+    .contact-hero h1 em {
+      font-style: italic;
+      color: var(--accent, #00c2a8);
+    }
+
+    .contact-hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted, #a0aec0);
+      line-height: 1.7;
+    }
+
+    /* ── Form card ── */
+    .contact-section {
+      max-width: 680px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+
+    .contact-card {
+      background: var(--card-bg, #111827);
+      border: 1px solid var(--border, rgba(255,255,255,0.08));
+      border-radius: 16px;
+      padding: 48px 40px;
+    }
+
+    @media (max-width: 600px) {
+      .contact-card {
+        padding: 32px 20px;
+      }
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text, #e2e8f0);
+    }
+
+    .form-group label .optional {
+      font-weight: 400;
+      color: var(--text-muted, #718096);
+      font-size: 0.8rem;
+      margin-left: 4px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: var(--input-bg, rgba(255,255,255,0.04));
+      border: 1px solid var(--border, rgba(255,255,255,0.1));
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text, #e2e8f0);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted, #4a5568);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent, #00c2a8);
+      box-shadow: 0 0 0 3px rgba(0, 194, 168, 0.12);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px 32px;
+      background: var(--accent, #00c2a8);
+      color: #000;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      margin-top: 8px;
+      letter-spacing: 0.01em;
+    }
+
+    .submit-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Success state */
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 32px;
+      color: var(--accent, #00c2a8);
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .success-msg .checkmark {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    /* ── Trust badges below form ── */
+    .contact-trust {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+      color: var(--text-muted, #718096);
+      font-size: 0.85rem;
+    }
+
+    .contact-trust span::before {
+      content: "✓ ";
+      color: var(--accent, #00c2a8);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER (exact match) ── -->
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="file:///C:/Users/Matia/Downloads/index.html" class="nav-logo">
+        <img src="file:///C:/Users/Matia/Downloads/logo.svg" alt="MeridianHub logo" class="logo-img" onerror="this.style.display=&#39;none&#39;" style="display: none;">
+        MeridianHub
+      </a>
+      <ul class="nav-links">
+        <li><a href="file:///C:/Users/Matia/Downloads/services.html">Services</a></li>
+        <li><a href="file:///C:/Users/Matia/Downloads/why-uruguay.html">Why Uruguay</a></li>
+        <li><a href="file:///C:/Users/Matia/Downloads/pricing.html">Pricing</a></li>
+        <li><a href="file:///C:/Users/Matia/Downloads/index.html#how">How It Works</a></li>
+        <li><a href="file:///C:/Users/Matia/Downloads/index.html#faq">FAQ</a></li>
+        <li><a href="file:///C:/Users/Matia/Downloads/contact.html" class="active">Contact</a></li>
+      </ul>
+      <a href="file:///C:/Users/Matia/Downloads/contact.html" class="nav-cta">Book a Free Call</a>
+      <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    </nav>
+  </header>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main>
+
+    <div class="contact-hero">
+      <span class="section-label">Get in Touch</span>
+      <h1>Let's find your first <em>Uruguayan professional.</em></h1>
+      <p>Tell us what you need and we'll get back to you within 24 hours — no commitment, no pressure.</p>
+    </div>
+
+    <div class="contact-section">
+      <div class="contact-card">
+
+        <form id="contactForm" novalidate="">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required="">
+            </div>
+            <div class="form-group">
+              <label for="company">Company <span class="optional">(optional)</span></label>
+              <input type="text" id="company" name="company" placeholder="Acme Ltd">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@acme.co.uk" required="">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone <span class="optional">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="+44 7700 000000">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us what role you&#39;re looking to fill, your team size, or any questions you have..." required=""></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Send Message →</button>
+
+        </form>
+
+        <div class="success-msg" id="successMsg">
+          <span class="checkmark">✅</span>
+          Thanks! We'll be in touch within 24 hours.
+        </div>
+
+      </div>
+
+      <div class="contact-trust">
+        <span>No commitment required</span>
+        <span>Response within 24h</span>
+        <span>NDA before anything starts</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── FOOTER (exact match) ── -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="file:///C:/Users/Matia/Downloads/index.html" class="nav-logo footer-logo">
+          <img src="file:///C:/Users/Matia/Downloads/logo.svg" alt="MeridianHub logo" class="logo-img" onerror="this.style.display=&#39;none&#39;" style="display: none;">
+          MeridianHub
+        </a>
+        <p>Elite offshore talent from Uruguay, built for UK businesses.</p>
+        <div class="footer-social">
+          <a href="file:///C:/Users/Matia/Downloads/contact.html#" title="Instagram">#</a>
+          <a href="file:///C:/Users/Matia/Downloads/contact.html#" title="LinkedIn">#</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="file:///C:/Users/Matia/Downloads/index.html#services">Customer Support</a></li>
+          <li><a href="file:///C:/Users/Matia/Downloads/index.html#services">Graphic Design</a></li>
+          <li><a href="file:///C:/Users/Matia/Downloads/index.html#services">Project Management</a></li>
+          <li><a href="file:///C:/Users/Matia/Downloads/index.html#services">Web Development</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="file:///C:/Users/Matia/Downloads/why-uruguay.html">Why Uruguay</a></li>
+          <li><a href="file:///C:/Users/Matia/Downloads/pricing.html">Pricing</a></li>
+          <li><a href="file:///C:/Users/Matia/Downloads/index.html#how">How It Works</a></li>
+          <li><a href="file:///C:/Users/Matia/Downloads/index.html#trust">Our Guarantee</a></li>
+          <li><a href="file:///C:/Users/Matia/Downloads/contact.html#">Join Our Talent Pool</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="file:///C:/Users/Matia/Downloads/index.html#faq">FAQ</a></li>
+          <li><a href="file:///C:/Users/Matia/Downloads/contact.html">Contact Us</a></li>
+          <li><a href="file:///C:/Users/Matia/Downloads/contact.html#">Legal Notice</a></li>
+          <li><a href="file:///C:/Users/Matia/Downloads/contact.html#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 MeridianHub Ltd. All rights reserved.</p>
+      <p>✉ <a href="mailto:support@meridianhub.co.uk">support@meridianhub.co.uk</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (toggle && navLinks) {
+      toggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+    }
+
+    // Form submission
+    const form = document.getElementById('contactForm');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        alert('Please fill in your name, email, and message.');
+        return;
+      }
+
+      // Build mailto link as fallback (no backend needed)
+      const company = document.getElementById('company').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const subject = encodeURIComponent('MeridianHub Enquiry — ' + name);
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Company: ' + (company || 'N/A') + '\n' +
+        'Phone: ' + (phone || 'N/A') + '\n' +
+        'Email: ' + email + '\n\n' +
+        'Message:\n' + message
+      );
+
+      window.location.href = 'mailto:support@meridianhub.co.uk?subject=' + subject + '&body=' + body;
+
+      // Show success
+      form.style.display = 'none';
+      successMsg.style.display = 'block';
+    });
+  </script>
+
+
+
+</body></html>
