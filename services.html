@@ -941,7 +941,7 @@
   <!-- ========================================================
        FOOTER
   ======================================================== -->
-  <footer>
+  <!-- <footer>
     <div class="container">
       <div class="footer-grid">
         <div class="ft-brand">
@@ -999,7 +999,14 @@
         </div>
       </div>
     </div>
-  </footer>
+  </footer> -->
+
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('footer.html')
+    .then(r => r.text())
+    .then(html => document.getElementById('footer-placeholder').innerHTML = html);
+</script>
 
   <script>
     // Mobile nav
