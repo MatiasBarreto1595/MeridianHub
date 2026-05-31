@@ -8,7 +8,359 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    :root {
+      --navy:       #0B1628;
+      --navy-2:     #0F1E35;
+      --navy-3:     #152540;
+      --navy-4:     #1A2D4D;
+      --teal:       #00C4B4;
+      --teal-dim:   rgba(0,196,180,0.15);
+      --teal-border:rgba(0,196,180,0.25);
+      --gold:       #E8C87A;
+      --gold-dim:   rgba(232,200,122,0.12);
+      --white:      #FFFFFF;
+      --off-white:  #E8EDF5;
+      --muted:      #8A9BB5;
+      --border:     rgba(255,255,255,0.08);
+      --max-w:      1160px;
+      --r:          10px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--navy);
+      color: var(--off-white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    strong { color: var(--white); font-weight: 600; }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+    .tag::before {
+      content: '';
+      display: block;
+      width: 18px; height: 2px;
+      background: var(--teal);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      line-height: 1.12;
+      color: var(--white);
+    }
+
+    h1 { font-size: clamp(2.4rem, 5vw, 4rem); letter-spacing: -0.02em; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: var(--r);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.22s;
+      border: none;
+      padding: 0.8rem 1.75rem;
+      letter-spacing: 0.01em;
+    }
+    .btn-cta {
+      background: var(--teal);
+      color: var(--navy);
+      box-shadow: 0 4px 24px rgba(0,196,180,0.3);
+    }
+    .btn-cta:hover { background: #00ddd0; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,196,180,0.45); }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(11,22,40,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .logo-mark {
+      width: 36px; height: 36px;
+      border-radius: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-mark img { width: 36px; height: 36px; object-fit: contain; display: block; }
+    .logo-text span { color: var(--teal); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.1rem;
+    }
+    nav ul a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    nav ul a:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+
+    .ham {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .ham span {
+      width: 22px; height: 2px;
+      background: var(--off-white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid var(--border);
+      padding: 4rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .ft-brand .logo { margin-bottom: 0.75rem; }
+    .ft-brand .tagline {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 210px;
+      margin-bottom: 1.25rem;
+    }
+    .social-row { display: flex; gap: 0.65rem; }
+    .social-row a {
+      width: 34px; height: 34px;
+      background: var(--navy-2);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .social-row a:hover { background: var(--teal); color: var(--navy); border-color: var(--teal); }
+    .ft-col h5 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .ft-col ul a {
+      font-size: 0.84rem;
+      color: var(--muted);
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .ft-col ul a::before { content: '›'; color: var(--teal); opacity: 0.6; }
+    .ft-col ul a:hover { color: var(--white); }
+    .footer-bottom {
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-bottom p { font-size: 0.78rem; color: var(--muted); }
+    .footer-contact {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .footer-contact a { color: var(--teal); transition: opacity 0.2s; }
+    .footer-contact a:hover { opacity: 0.8; }
+
+    /* CONTACT PAGE */
+    .contact-hero {
+      text-align: center;
+      padding: 80px 24px 48px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .contact-hero .tag { justify-content: center; }
+    .contact-hero h1 { margin-bottom: 1rem; }
+    .contact-hero h1 em { font-style: italic; color: var(--teal); }
+    .contact-hero p { font-size: 1.05rem; color: var(--muted); line-height: 1.8; }
+
+    .contact-section {
+      max-width: 680px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+    .contact-card {
+      background: var(--navy-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--gold));
+    }
+    @media (max-width: 600px) { .contact-card { padding: 32px 20px; } }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .form-group label { font-size: 0.875rem; font-weight: 500; color: var(--off-white); }
+    .form-group label .optional { font-weight: 400; color: var(--muted); font-size: 0.8rem; margin-left: 4px; }
+    .form-group input,
+    .form-group textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      font-family: 'Poppins', sans-serif;
+      color: var(--off-white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--muted); }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(0,196,180,0.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 140px; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px 32px;
+      background: var(--teal);
+      color: var(--navy);
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.22s;
+      margin-top: 8px;
+      letter-spacing: 0.01em;
+      box-shadow: 0 4px 24px rgba(0,196,180,0.3);
+    }
+    .submit-btn:hover { background: #00ddd0; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,196,180,0.45); }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 32px;
+      color: var(--teal);
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    .success-msg .checkmark { font-size: 2.5rem; display: block; margin-bottom: 12px; }
+
+    .contact-trust {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    .contact-trust span::before { content: "✓ "; color: var(--teal); font-weight: 700; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(11,22,40,0.98); border-bottom: 1px solid var(--border); padding: 1rem; }
+      nav.open { display: block; }
+      nav ul { flex-direction: column; gap: 0.1rem; }
+      nav ul a { display: block; padding: 0.75rem 1rem; }
+      .ham { display: flex; }
+      .header-cta-wrap { display: none; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
@@ -17,7 +369,7 @@
     <div class="header-inner">
       <a href="index.html" class="logo">
         <div class="logo-mark">
-          <img src="logo.png" alt="MeridianHub" onerror="this.style.display='none'">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB9AAAAfQCAYAAACaOMR5AAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAEAAElEQVR4nOz9Z3cbWbKu7d4xZxo4klK59mvvd5wxzv//SWe/e9le3au7SqIBgZxxPiRAUizKlRxF3VcNFUgg4RIJEMCTEQGSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmS3k986RsgSZIkSdK3pFt8n6UUIoJdm2iXf/ezuSRJkiRJj0T3pW+AJEmSJEnfhPH3ybCgDAN9XwGI3Z5tt8rcX0MkXPzVMF2SJEmSpC/ID+aSJEmSJH1iw3f/kte7keG73/Pds+cMY8d0veXq8pyri/nfdPWSKEnNPfuX/+HndUmSJEmSvgAr0CVJkiRJ+oSW3/8l6+qM5cmf6JbPKePIvu25jqB1QVn2rPoV1/2C/fUl+6vzL32TJUmSJEn6ZhmgS5IkSZL0sW1+zG5Y0Y9L1usN3eo59fR3ZF2Rmey2W7bTjkZSu57a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JEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmS" alt="MeridianHub" onerror="this.style.display='none'">
         </div>
         <span class="logo-text">Meridian<span>Hub</span></span>
       </a>
@@ -43,7 +395,7 @@
     </div>
   </header>
 
-  <!-- ===== CONTACT HERO ===== -->
+  <!-- ===== HERO ===== -->
   <div class="contact-hero">
     <span class="tag">Get in Touch</span>
     <h1>Let's find your first <em>Uruguayan professional.</em></h1>
@@ -54,7 +406,7 @@
   <div class="contact-section">
     <div class="contact-card">
 
-      <form id="contactForm" novalidate>
+      <form id="contactForm">
 
         <div class="form-row">
           <div class="form-group">
@@ -83,7 +435,7 @@
           <textarea id="message" name="message" placeholder="Tell us what role you're looking to fill, your team size, or any questions you have..." required></textarea>
         </div>
 
-        <button type="submit" class="submit-btn">Send Message →</button>
+        <button type="submit" class="submit-btn" id="submitBtn">Send Message →</button>
 
       </form>
 
@@ -108,7 +460,7 @@
         <div class="ft-brand">
           <a href="index.html" class="logo">
             <div class="logo-mark">
-              <img src="logo.png" alt="MeridianHub" onerror="this.style.display='none'">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB9AAAAfQCAYAAACaOMR5AAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAEAAElEQVR4nOz9Z3cbWbKu7d4xZxo4klK59mvvd5wxzv//SWe/e9le3au7SqIBgZxxPiRAUizKlRxF3VcNFUgg4RIJEMCTEQGSJEmSJEmSJEmSJEmSJEmSJEmS" alt="MeridianHub" onerror="this.style.display='none'">
             </div>
             <span class="logo-text">Meridian<span>Hub</span></span>
           </a>
@@ -145,8 +497,8 @@
           <ul>
             <li><a href="index.html#faq">FAQ</a></li>
             <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="#">Legal Notice</a></li>
-            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="legal-notice.html">Legal Notice</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
           </ul>
         </div>
       </div>
@@ -155,45 +507,51 @@
         <p>© 2025 MeridianHub Ltd. All rights reserved.</p>
         <div class="footer-contact">
           <span>✉</span>
-          <a href="mailto:support@meridianhub.co.uk">support@meridianhub.co.uk</a>
+          <a href="mailto:hello@meridianhub.co.uk">hello@meridianhub.co.uk</a>
         </div>
       </div>
     </div>
   </footer>
 
   <script>
+    // Mobile menu
     const ham = document.getElementById('ham');
     const nav = document.getElementById('nav');
     ham.addEventListener('click', () => nav.classList.toggle('open'));
 
+    // Form submit via Formspree
     const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
     const successMsg = document.getElementById('successMsg');
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
       e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
 
-      if (!name || !email || !message) {
-        alert('Please fill in your name, email address, and message.');
-        return;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
+      const data = new FormData(form);
+
+      try {
+        const response = await fetch('https://formspree.io/f/mykvaqzg', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        } else {
+          submitBtn.textContent = 'Send Message →';
+          submitBtn.disabled = false;
+          alert('Something went wrong. Please try again or email us at hello@meridianhub.co.uk');
+        }
+      } catch (error) {
+        submitBtn.textContent = 'Send Message →';
+        submitBtn.disabled = false;
+        alert('Something went wrong. Please try again or email us at hello@meridianhub.co.uk');
       }
-
-      const company = document.getElementById('company').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const subject = encodeURIComponent('MeridianHub Enquiry — ' + name);
-      const body = encodeURIComponent(
-        'Name: ' + name + '\n' +
-        'Company: ' + (company || 'N/A') + '\n' +
-        'Phone: ' + (phone || 'N/A') + '\n' +
-        'Email: ' + email + '\n\n' +
-        'Message:\n' + message
-      );
-
-      window.location.href = 'mailto:support@meridianhub.co.uk?subject=' + subject + '&body=' + body;
-      form.style.display = 'none';
-      successMsg.style.display = 'block';
     });
   </script>
 
