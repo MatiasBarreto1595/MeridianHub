@@ -106,8 +106,10 @@
     .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
 
     .ham {
-      display: none; flex-direction: column; gap: 5px;
-      cursor: pointer; padding: 4px;
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 4px;
+    background: none;
+    border: none;
     }
     .ham span {
       width: 22px; height: 2px; background: var(--off-white);
@@ -573,6 +575,8 @@
       .how-steps::before { display: none; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .service-tabs-wrap { position: static; }
+      .header-cta-wrap { display: none; }
+      .ham { display: flex; }
     }
   </style>
 </head>
