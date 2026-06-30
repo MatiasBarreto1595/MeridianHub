@@ -57,6 +57,12 @@
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
+    .header-cta-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
     .header-inner {
       max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;
       height: 68px; display: flex; align-items: center;
@@ -601,8 +607,8 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
-    <div class="header-cta-wrap" style="display:flex;align-items:center;gap:0.75rem;flex-shrink:0;">
-    <a href="contact.html" class="btn btn-cta">Book a Free Call</a>
+    <div class="header-cta-wrap">
+  <a href="contact.html" class="btn btn-cta">Book a Free Call</a>
 </div>
 <button class="ham" id="ham" aria-label="Menu">
     <span></span><span></span><span></span>
