@@ -455,65 +455,15 @@
   </div>
 
   <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="ft-brand">
-          <a href="index.html" class="logo">
-            <div class="logo-mark">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB9AAAAfQCAYAAACaOMR5AAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAEAAElEQVR4nOz9Z3cbWbKu7d4xZxo4klK59mvvd5wxzv//SWe/e9le3au7SqIBgZxxPiRAUizKlRxF3VcNFUgg4RIJEMCTEQGSJEmSJEmSJEmSJEmSJEmSJEmS" alt="MeridianHub" onerror="this.style.display='none'">
-            </div>
-            <span class="logo-text">Meridian<span>Hub</span></span>
-          </a>
-          <p class="tagline">Elite offshore talent from Uruguay, built for UK businesses.</p>
-          <div class="social-row">
-            <a href="#" title="Instagram">in</a>
-            <a href="#" title="LinkedIn">li</a>
-          </div>
-        </div>
-
-        <div class="ft-col">
-          <h5>Services</h5>
-          <ul>
-            <li><a href="index.html#services">Customer Support</a></li>
-            <li><a href="index.html#services">Graphic Design</a></li>
-            <li><a href="index.html#services">Project Management</a></li>
-            <li><a href="index.html#services">Web Development</a></li>
-          </ul>
-        </div>
-
-        <div class="ft-col">
-          <h5>Company</h5>
-          <ul>
-            <li><a href="why-uruguay.html">Why Uruguay</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="/#how">How It Works</a></li>
-            <li><a href="/#trust">Our Guarantee</a></li>
-          </ul>
-        </div>
-
-        <div class="ft-col">
-          <h5>Support</h5>
-          <ul>
-            <li><a href="index.html#faq">FAQ</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="legal-notice.html">Legal Notice</a></li>
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>© 2025 MeridianHub Ltd. All rights reserved.</p>
-        <div class="footer-contact">
-          <span>✉</span>
-          <a href="mailto:hello@meridianhub.co.uk">hello@meridianhub.co.uk</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <div id="footer-placeholder"></div>
 
   <script>
+    // Footer
+     fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+    });
     // Mobile menu
     const ham = document.getElementById('ham');
     const nav = document.getElementById('nav');
